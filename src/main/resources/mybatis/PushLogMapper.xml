@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.egfbank.payment.dao.PushLogMapper" >
+  <resultMap id="BaseResultMap" type="com.egfbank.payment.pojo.PushLog" >
+    <id column="trans_id" property="transId" jdbcType="VARCHAR" />
+    <result column="detail_id" property="detailId" jdbcType="VARCHAR" />
+    <result column="biz_type" property="bizType" jdbcType="VARCHAR" />
+    <result column="biz_no" property="bizNo" jdbcType="VARCHAR" />
+    <result column="error_type" property="errorType" jdbcType="VARCHAR" />
+    <result column="error_code" property="errorCode" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="error_msg" property="errorMsg" jdbcType="VARCHAR" />
+    <result column="err_count" property="errCount" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    trans_id, detail_id, biz_type, biz_no, error_type, error_code, create_time, error_msg, 
+    err_count
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from egf_push_log
+    where trans_id = #{transId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from egf_push_log
+    where trans_id = #{transId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.egfbank.payment.pojo.PushLog" >
+    insert into egf_push_log (trans_id, detail_id, biz_type, 
+      biz_no, error_type, error_code, 
+      create_time, error_msg, err_count
+      )
+    values (#{transId,jdbcType=VARCHAR}, #{detailId,jdbcType=VARCHAR}, #{bizType,jdbcType=VARCHAR}, 
+      #{bizNo,jdbcType=VARCHAR}, #{errorType,jdbcType=VARCHAR}, #{errorCode,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{errorMsg,jdbcType=VARCHAR}, #{errCount,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.egfbank.payment.pojo.PushLog" >
+    insert into egf_push_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="transId != null" >
+        trans_id,
+      </if>
+      <if test="detailId != null" >
+        detail_id,
+      </if>
+      <if test="bizType != null" >
+        biz_type,
+      </if>
+      <if test="bizNo != null" >
+        biz_no,
+      </if>
+      <if test="errorType != null" >
+        error_type,
+      </if>
+      <if test="errorCode != null" >
+        error_code,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="errorMsg != null" >
+        error_msg,
+      </if>
+      <if test="errCount != null" >
+        err_count,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="transId != null" >
+        #{transId,jdbcType=VARCHAR},
+      </if>
+      <if test="detailId != null" >
+        #{detailId,jdbcType=VARCHAR},
+      </if>
+      <if test="bizType != null" >
+        #{bizType,jdbcType=VARCHAR},
+      </if>
+      <if test="bizNo != null" >
+        #{bizNo,jdbcType=VARCHAR},
+      </if>
+      <if test="errorType != null" >
+        #{errorType,jdbcType=VARCHAR},
+      </if>
+      <if test="errorCode != null" >
+        #{errorCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="errorMsg != null" >
+        #{errorMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="errCount != null" >
+        #{errCount,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.egfbank.payment.pojo.PushLog" >
+    update egf_push_log
+    <set >
+      <if test="detailId != null" >
+        detail_id = #{detailId,jdbcType=VARCHAR},
+      </if>
+      <if test="bizType != null" >
+        biz_type = #{bizType,jdbcType=VARCHAR},
+      </if>
+      <if test="bizNo != null" >
+        biz_no = #{bizNo,jdbcType=VARCHAR},
+      </if>
+      <if test="errorType != null" >
+        error_type = #{errorType,jdbcType=VARCHAR},
+      </if>
+      <if test="errorCode != null" >
+        error_code = #{errorCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="errorMsg != null" >
+        error_msg = #{errorMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="errCount != null" >
+        err_count = #{errCount,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where trans_id = #{transId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.egfbank.payment.pojo.PushLog" >
+    update egf_push_log
+    set detail_id = #{detailId,jdbcType=VARCHAR},
+      biz_type = #{bizType,jdbcType=VARCHAR},
+      biz_no = #{bizNo,jdbcType=VARCHAR},
+      error_type = #{errorType,jdbcType=VARCHAR},
+      error_code = #{errorCode,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      error_msg = #{errorMsg,jdbcType=VARCHAR},
+      err_count = #{errCount,jdbcType=DECIMAL}
+    where trans_id = #{transId,jdbcType=VARCHAR}
+  </update>
+</mapper>

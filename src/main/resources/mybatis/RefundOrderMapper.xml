@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.egfbank.payment.dao.RefundOrderMapper" >
+  <resultMap id="BaseResultMap" type="com.egfbank.payment.pojo.RefundOrder" >
+    <id column="refund_id" property="refundId" jdbcType="VARCHAR" />
+    <result column="payorder_id" property="payorderId" jdbcType="VARCHAR" />
+    <result column="biz_product" property="bizProduct" jdbcType="VARCHAR" />
+    <result column="biz_type" property="bizType" jdbcType="VARCHAR" />
+    <result column="merchant_no" property="merchantNo" jdbcType="VARCHAR" />
+    <result column="biz_no" property="bizNo" jdbcType="VARCHAR" />
+    <result column="refund_account" property="refundAccount" jdbcType="VARCHAR" />
+    <result column="receive_account" property="receiveAccount" jdbcType="VARCHAR" />
+    <result column="refund_amount" property="refundAmount" jdbcType="DECIMAL" />
+    <result column="refund_memo" property="refundMemo" jdbcType="VARCHAR" />
+    <result column="refund_date" property="refundDate" jdbcType="TIMESTAMP" />
+    <result column="trans_cur" property="transCur" jdbcType="CHAR" />
+    <result column="pay_tool" property="payTool" jdbcType="VARCHAR" />
+    <result column="channel" property="channel" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="CHAR" />
+    <result column="MERCHANT_ID" property="merchantId" jdbcType="VARCHAR" />
+    <result column="inst_channel" property="instChannel" jdbcType="VARCHAR" />
+    <result column="bill_info" property="billInfo" jdbcType="VARCHAR" />
+    <result column="trade_no" property="tradeNo" jdbcType="VARCHAR" />
+    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
+    <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    refund_id, payorder_id, biz_product, biz_type, merchant_no, biz_no, refund_account, 
+    receive_account, refund_amount, refund_memo, refund_date, trans_cur, pay_tool, channel, 
+    status, MERCHANT_ID, inst_channel, bill_info, trade_no, gmt_create, gmt_modified
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from egf_refund_order
+    where refund_id = #{refundId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from egf_refund_order
+    where refund_id = #{refundId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.egfbank.payment.pojo.RefundOrder" >
+    insert into egf_refund_order (refund_id, payorder_id, biz_product, 
+      biz_type, merchant_no, biz_no, 
+      refund_account, receive_account, refund_amount, 
+      refund_memo, refund_date, trans_cur, 
+      pay_tool, channel, status, 
+      MERCHANT_ID, inst_channel, bill_info, 
+      trade_no, gmt_create, gmt_modified
+      )
+    values (#{refundId,jdbcType=VARCHAR}, #{payorderId,jdbcType=VARCHAR}, #{bizProduct,jdbcType=VARCHAR}, 
+      #{bizType,jdbcType=VARCHAR}, #{merchantNo,jdbcType=VARCHAR}, #{bizNo,jdbcType=VARCHAR}, 
+      #{refundAccount,jdbcType=VARCHAR}, #{receiveAccount,jdbcType=VARCHAR}, #{refundAmount,jdbcType=DECIMAL}, 
+      #{refundMemo,jdbcType=VARCHAR}, #{refundDate,jdbcType=TIMESTAMP}, #{transCur,jdbcType=CHAR}, 
+      #{payTool,jdbcType=VARCHAR}, #{channel,jdbcType=VARCHAR}, #{status,jdbcType=CHAR}, 
+      #{merchantId,jdbcType=VARCHAR}, #{instChannel,jdbcType=VARCHAR}, #{billInfo,jdbcType=VARCHAR}, 
+      #{tradeNo,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.egfbank.payment.pojo.RefundOrder" >
+    insert into egf_refund_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="refundId != null" >
+        refund_id,
+      </if>
+      <if test="payorderId != null" >
+        payorder_id,
+      </if>
+      <if test="bizProduct != null" >
+        biz_product,
+      </if>
+      <if test="bizType != null" >
+        biz_type,
+      </if>
+      <if test="merchantNo != null" >
+        merchant_no,
+      </if>
+      <if test="bizNo != null" >
+        biz_no,
+      </if>
+      <if test="refundAccount != null" >
+        refund_account,
+      </if>
+      <if test="receiveAccount != null" >
+        receive_account,
+      </if>
+      <if test="refundAmount != null" >
+        refund_amount,
+      </if>
+      <if test="refundMemo != null" >
+        refund_memo,
+      </if>
+      <if test="refundDate != null" >
+        refund_date,
+      </if>
+      <if test="transCur != null" >
+        trans_cur,
+      </if>
+      <if test="payTool != null" >
+        pay_tool,
+      </if>
+      <if test="channel != null" >
+        channel,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="merchantId != null" >
+        MERCHANT_ID,
+      </if>
+      <if test="instChannel != null" >
+        inst_channel,
+      </if>
+      <if test="billInfo != null" >
+        bill_info,
+      </if>
+      <if test="tradeNo != null" >
+        trade_no,
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create,
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="refundId != null" >
+        #{refundId,jdbcType=VARCHAR},
+      </if>
+      <if test="payorderId != null" >
+        #{payorderId,jdbcType=VARCHAR},
+      </if>
+      <if test="bizProduct != null" >
+        #{bizProduct,jdbcType=VARCHAR},
+      </if>
+      <if test="bizType != null" >
+        #{bizType,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantNo != null" >
+        #{merchantNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bizNo != null" >
+        #{bizNo,jdbcType=VARCHAR},
+      </if>
+      <if test="refundAccount != null" >
+        #{refundAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveAccount != null" >
+        #{receiveAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="refundAmount != null" >
+        #{refundAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="refundMemo != null" >
+        #{refundMemo,jdbcType=VARCHAR},
+      </if>
+      <if test="refundDate != null" >
+        #{refundDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="transCur != null" >
+        #{transCur,jdbcType=CHAR},
+      </if>
+      <if test="payTool != null" >
+        #{payTool,jdbcType=VARCHAR},
+      </if>
+      <if test="channel != null" >
+        #{channel,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="merchantId != null" >
+        #{merchantId,jdbcType=VARCHAR},
+      </if>
+      <if test="instChannel != null" >
+        #{instChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="billInfo != null" >
+        #{billInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeNo != null" >
+        #{tradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null" >
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null" >
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.egfbank.payment.pojo.RefundOrder" >
+    update egf_refund_order
+    <set >
+      <if test="payorderId != null" >
+        payorder_id = #{payorderId,jdbcType=VARCHAR},
+      </if>
+      <if test="bizProduct != null" >
+        biz_product = #{bizProduct,jdbcType=VARCHAR},
+      </if>
+      <if test="bizType != null" >
+        biz_type = #{bizType,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantNo != null" >
+        merchant_no = #{merchantNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bizNo != null" >
+        biz_no = #{bizNo,jdbcType=VARCHAR},
+      </if>
+      <if test="refundAccount != null" >
+        refund_account = #{refundAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveAccount != null" >
+        receive_account = #{receiveAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="refundAmount != null" >
+        refund_amount = #{refundAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="refundMemo != null" >
+        refund_memo = #{refundMemo,jdbcType=VARCHAR},
+      </if>
+      <if test="refundDate != null" >
+        refund_date = #{refundDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="transCur != null" >
+        trans_cur = #{transCur,jdbcType=CHAR},
+      </if>
+      <if test="payTool != null" >
+        pay_tool = #{payTool,jdbcType=VARCHAR},
+      </if>
+      <if test="channel != null" >
+        channel = #{channel,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=CHAR},
+      </if>
+      <if test="merchantId != null" >
+        MERCHANT_ID = #{merchantId,jdbcType=VARCHAR},
+      </if>
+      <if test="instChannel != null" >
+        inst_channel = #{instChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="billInfo != null" >
+        bill_info = #{billInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeNo != null" >
+        trade_no = #{tradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where refund_id = #{refundId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.egfbank.payment.pojo.RefundOrder" >
+    update egf_refund_order
+    set payorder_id = #{payorderId,jdbcType=VARCHAR},
+      biz_product = #{bizProduct,jdbcType=VARCHAR},
+      biz_type = #{bizType,jdbcType=VARCHAR},
+      merchant_no = #{merchantNo,jdbcType=VARCHAR},
+      biz_no = #{bizNo,jdbcType=VARCHAR},
+      refund_account = #{refundAccount,jdbcType=VARCHAR},
+      receive_account = #{receiveAccount,jdbcType=VARCHAR},
+      refund_amount = #{refundAmount,jdbcType=DECIMAL},
+      refund_memo = #{refundMemo,jdbcType=VARCHAR},
+      refund_date = #{refundDate,jdbcType=TIMESTAMP},
+      trans_cur = #{transCur,jdbcType=CHAR},
+      pay_tool = #{payTool,jdbcType=VARCHAR},
+      channel = #{channel,jdbcType=VARCHAR},
+      status = #{status,jdbcType=CHAR},
+      MERCHANT_ID = #{merchantId,jdbcType=VARCHAR},
+      inst_channel = #{instChannel,jdbcType=VARCHAR},
+      bill_info = #{billInfo,jdbcType=VARCHAR},
+      trade_no = #{tradeNo,jdbcType=VARCHAR},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}
+    where refund_id = #{refundId,jdbcType=VARCHAR}
+  </update>
+</mapper>
