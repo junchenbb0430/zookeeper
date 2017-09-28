@@ -45,30 +45,31 @@
 		<property name="dataPath" value="/zk-floor16/floor-1601"/>
 		<property name="nodePath" value="/zk-floor16"/>
 	</bean>
-	
-	<bean id="nodeCacheManager" class="com.egfbank.framework.zookeeper.curator.watch.NodeCacheListenerManager" init-method="init">
-		<property name="dataPath" value="/zk-floor16/floor-1601"/>
-		<property name="nodePath" value="/zk-floor16"/>
-	</bean>
-	
 	<!-- kryoPool配置 -->
-	<bean id="kryoSerializeService" class="com.egfbank.framework.serialize.service.impl.KryoSerializerService"/>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	<bean id="kryoSerializerService" class="com.egfbank.framework.serialize.KryoSerializerService"/>
 	
 	 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	<bean id="passengerPlane" class="com.egfbank.framework.springstudy.chap02.setter.PassengerPlane">
 		<property name="planeName" value="boyin-747"></property>
 		<!--<property name="engine" ref = "engine"></property> -->
-	</bean>
+	</bean> 
 	 <!--  p:方式不能装配集合类型
 	<bean id="passengerPlane" class="com.egfbank.framework.springstudy.chap02.setter.PassengerPlane"
 			p:planeName="boyin-747"

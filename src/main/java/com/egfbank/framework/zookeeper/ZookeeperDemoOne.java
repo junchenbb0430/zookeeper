@@ -21,12 +21,13 @@ public class ZookeeperDemoOne implements Watcher
     	//ZooKeeper zookeeper = new ZooKeeper("192.168.121.3:2181",5000);
     	 
     	try {
-			ZooKeeper zk = new ZooKeeper("192.168.121.3:2181",500,new ZookeeperDemoOne());
-			System.out.println(zk.getState());
-			System.out.println(zk.getState());
-			System.out.println("sessionId---->"+zk.getSessionId());
+			ZooKeeper zk = new ZooKeeper("192.168.121.48:2181",5000,new ZookeeperDemoOne());
+			
 			try {
 				cdl.await();
+				System.out.println(zk.getState());
+				System.out.println(zk.getState());
+				System.out.println("sessionId---->"+zk.getSessionId());
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

@@ -8,7 +8,7 @@ import org.apache.zookeeper.ZooKeeper;
 
 public class ZooKeeperFactory {
 
-	private static String connectStr = "192.168.121.3:2181,192.168.121.4:2181";
+	private static String connectStr = "192.168.121.13:2181,192.168.121.47:2181,192.168.121.48:2181";
 	private static int sessionTimeout = 5000;
 	
 	
@@ -43,5 +43,6 @@ public class ZooKeeperFactory {
 		}
 		return zk;
 	}
+	
 	
 }

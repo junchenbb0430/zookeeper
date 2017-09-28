@@ -11,7 +11,7 @@ import org.apache.zookeeper.ZooKeeper;
 public class ZooKeeperDemoSession implements Watcher{
 	private static CountDownLatch semaphore = new CountDownLatch(1);
 	public static void main(String[] args) {
-		String connectStr = "192.168.121.3:2181"; 
+		String connectStr = "192.168.121.13:2181"; 
 		try {
 			ZooKeeper zk = new ZooKeeper(connectStr,5000,new ZooKeeperDemoSession());
 			semaphore.await();//挂起当前线程
@@ -23,7 +23,7 @@ public class ZooKeeperDemoSession implements Watcher{
 			
 			//使用正确的sessionId和sessionPasswd
 			zk = new ZooKeeper(connectStr,5000,new ZooKeeperDemoSession(),sessionId,passwd);
-			Thread.sleep(500);
+			Thread.sleep(5000);
 			System.out.println("sessionId-->"+zk.getSessionId()+", passwd-->"+zk.getSessionPasswd());
 			System.out.println("finish");
 		} catch (Exception e) {

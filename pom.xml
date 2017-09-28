@@ -22,6 +22,14 @@
       <version>4.12</version>
       <scope>test</scope>
     </dependency>
+    <!-- 配置引入@Resouce包 -->
+    <dependency>  
+            <groupId>javax.annotation</groupId>  
+            <artifactId>jsr250-api</artifactId>  
+            <version>1.0</version>  
+    </dependency>  
+    
+    <!-- zookeeper 配置 begin -->
     <dependency>
 	    <groupId>org.apache.zookeeper</groupId>
 	    <artifactId>zookeeper</artifactId>
@@ -41,11 +49,34 @@
                 </exclusion>  
             </exclusions>  
 	</dependency>
+	<!-- zkclient -->
+	<!-- https://mvnrepository.com/artifact/com.101tec/zkclient -->
+		<dependency>
+		    <groupId>com.github.sgroschupf</groupId>
+		    <artifactId>zkclient</artifactId>
+		    <version>0.1</version>
+	</dependency>
+	<!-- curator -->	
     <dependency>
 	    <groupId>org.apache.curator</groupId>
 	    <artifactId>curator-framework</artifactId>
-	    <version>2.9.0</version>
+	    <version>2.12.0</version>
 	</dependency>
+	<dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-recipes</artifactId>
+            <version>2.12.0</version>
+    </dependency>
+	<!-- 序列化：kryo 配置  -->
+	<!-- https://mvnrepository.com/artifact/com.esotericsoftware.kryo/kryo -->
+	<dependency>
+    	<groupId>com.esotericsoftware.kryo</groupId>
+    	<artifactId>kryo</artifactId>
+    	<version>2.24.0</version>
+	</dependency>
+	 
+    <!-- 序列化：kryo ended！  -->
+	<!-- zookeeper 配置 finished  -->
 	<dependency>
 	    <groupId>org.apache.kafka</groupId>
 	    <artifactId>kafka-clients</artifactId>
@@ -61,7 +92,7 @@
         <artifactId>spring-kafka</artifactId>
         <version>1.1.1.RELEASE</version>
     </dependency>
-    <!-- spring 配置 -->
+    <!-- spring 配置 begin -->
     <dependency>
         <groupId>org.springframework</groupId>
         <artifactId>spring-core</artifactId>
@@ -143,7 +174,7 @@
         <artifactId>spring-test</artifactId>
         <version>${spring-version}</version>
     </dependency>
-    <!-- spring 配置 -->
+    <!-- spring 配置  finished-->
     <!-- mybatis 配置 -->
     <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
 	<dependency>

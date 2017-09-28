@@ -10,6 +10,7 @@ import org.apache.zookeeper.Watcher.Event.KeeperState;
 import org.apache.zookeeper.ZooDefs.Ids;
 import org.apache.zookeeper.ZooKeeper;
 
+import com.egfbank.framework.utils.EgfDateUtils;
 import com.egfbank.framework.zookeeper.factory.ZooKeeperFactory;
 
 public class ZooKeeperAsyncCreateNode implements Watcher {
@@ -26,16 +27,15 @@ public class ZooKeeperAsyncCreateNode implements Watcher {
 
 	public static void main(String[] args) {
 		ZooKeeperAsyncCreateNode asyncCreateZooKeeper = new ZooKeeperAsyncCreateNode();
-		String connectStr = "192.168.121.3:2181";
-		String path ="/zk-root/trans/fastpay";
-		String data = "20160416";
-		ZooKeeper zk = ZooKeeperFactory.newZooKeeperInstance(connectStr, 5000, asyncCreateZooKeeper);
+		 
+		String path ="/zk-order/create_async";
+		String data = EgfDateUtils.formateCurrentDate(); 
+		ZooKeeper zk = ZooKeeperFactory.newZooKeeperInstance(asyncCreateZooKeeper);
 		try {
 			semaphore.await(); 
 			zk.create(path, data.getBytes(),Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT_SEQUENTIAL, new StringCallbackImpl(), "I am context");
 			 
-			zk.create(path, data.getBytes(),Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT_SEQUENTIAL, new StringCallbackImpl(), "I am context");
-			
+			Thread.sleep(30*1000);
 			System.out.println("*******finish*******");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
